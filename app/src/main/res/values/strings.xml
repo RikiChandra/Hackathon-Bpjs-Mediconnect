@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mediconnet</string>
+    <string name="favorite">Favorite</string>
+    <string name="pharmacy_image">Pharmacy Image</string>
+    <string name="star">Star</string>
+    <string name="reviews">" (%1$s Reviews)"</string>
 </resources>

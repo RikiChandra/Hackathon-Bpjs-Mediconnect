@@ -23,11 +23,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.bpjs.mediconnet.R
 
 
 @Composable
@@ -52,7 +54,7 @@ fun PharmacyCard(
                     .data(imageUrl)
                     .crossfade(true)
                     .build(),
-                contentDescription = "Pharmacy Image",
+                contentDescription = stringResource(R.string.pharmacy_image),
                 modifier = Modifier
                     .size(92.dp)
                     .clip(RoundedCornerShape(8.dp)),
@@ -77,7 +79,7 @@ fun PharmacyCard(
 
                     Icon(
                         imageVector = Icons.Default.FavoriteBorder,
-                        contentDescription = "Favorite",
+                        contentDescription = stringResource(R.string.favorite),
                         modifier = Modifier.size(24.dp),
                         tint = Color.Red
                     )
@@ -117,7 +119,7 @@ fun Rating(
 
         Icon(
             imageVector = Icons.Default.Star,
-            contentDescription = "Star",
+            contentDescription = stringResource(R.string.star),
             modifier = Modifier.size(14.dp),
             tint = Color(0xFFE8C547)
         )
@@ -128,7 +130,7 @@ fun Rating(
         )
 
         Text(
-            text = " ($reviewCount Reviews)",
+            text = stringResource(R.string.reviews, reviewCount),
             style = MaterialTheme.typography.bodySmall
         )
 

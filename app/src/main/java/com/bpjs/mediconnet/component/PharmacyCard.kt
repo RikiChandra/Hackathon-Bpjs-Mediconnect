@@ -38,24 +38,23 @@ import com.bpjs.mediconnet.R
 fun PharmacyCard(
     name: String,
     address: String,
-    imageUrl: String
+    imageUrl: String,
+    rating: Double,
+    reviewCount: Double,
 ) {
-
-    Card (
+    Card(
         modifier = Modifier
             .padding(16.dp)
             .shadow(4.dp, RoundedCornerShape(8.dp)),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-    ){
-
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(imageUrl)
@@ -71,12 +70,10 @@ fun PharmacyCard(
             Column(
                 modifier = Modifier.padding(start = 8.dp)
             ) {
-
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-
                     Text(
                         text = name,
                         style = MaterialTheme.typography.titleMedium.copy(
@@ -90,7 +87,6 @@ fun PharmacyCard(
                         modifier = Modifier.size(24.dp),
                         tint = Color.Red
                     )
-
                 }
 
                 Divider(
@@ -105,25 +101,18 @@ fun PharmacyCard(
                     )
                 )
 
-                Rating(4.7f, 7.932f)
-
+                Rating(rating, reviewCount)
             }
-
         }
-
     }
-
 }
-
 
 @Composable
 fun Rating(
-    rating: Float,
-    reviewCount: Float
+    rating: Double,
+    reviewCount: Double,
 ) {
-
     Row(verticalAlignment = Alignment.CenterVertically) {
-
         Icon(
             imageVector = Icons.Default.Star,
             contentDescription = stringResource(R.string.star),
@@ -140,9 +129,7 @@ fun Rating(
             text = stringResource(R.string.reviews, reviewCount),
             style = MaterialTheme.typography.bodySmall
         )
-
     }
-
 }
 
 @Preview(showBackground = true)
@@ -152,10 +139,11 @@ fun PharmacyCardPreview() {
         PharmacyCard(
             name = "Apotek K24",
             address = "Jl. Raya Bogor, Jakarta",
-            imageUrl = "https://cdn1-production-images-kly.akamaized.net/WRt03bt8AMbzN6bq9Kh8UZ7QtEc=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/656087/original/kimiafarma-140110b.jpg"
+            imageUrl = "https://cdn1-production-images-kly.akamaized.net/WRt03bt8AMbzN6bq9Kh8UZ7QtEc=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/656087/original/kimiafarma-140110b.jpg",
+            rating = 4.7,
+            reviewCount = 7.932,
         )
     }
-
 }
 
 @Composable

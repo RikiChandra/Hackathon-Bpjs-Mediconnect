@@ -32,7 +32,7 @@ fun CategoryChips(
     })
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun CategoryChipsPreview() {
     CategoryChips(

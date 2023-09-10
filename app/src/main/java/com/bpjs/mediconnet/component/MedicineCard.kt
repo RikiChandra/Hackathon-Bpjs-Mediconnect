@@ -1,7 +1,9 @@
 package com.bpjs.mediconnet.component
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -61,7 +63,12 @@ fun MedicineCard(
         Column(
             modifier = Modifier.padding(8.dp)
         ) {
-            Row {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp)
+            ) {
                 Text(
                     text = name,
                     style = MaterialTheme.typography.titleMedium.copy(
@@ -75,17 +82,17 @@ fun MedicineCard(
                     modifier = Modifier.size(24.dp),
                     tint = Color.Red
                 )
-
             }
 
             Divider(
                 modifier = Modifier.padding(vertical = 8.dp)
             )
+
             Text(
                 text = description,
                 textAlign = TextAlign.Justify,
                 lineHeight = 20.sp,
-                maxLines = 8,
+                maxLines = 4,
                 overflow = TextOverflow.Ellipsis
             )
         }

@@ -11,22 +11,18 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.bpjs.mediconnet.component.PharmacyCard
 import com.bpjs.mediconnet.component.ShimmerPharmacyItem
-import com.bpjs.mediconnet.di.Injection
 import com.bpjs.mediconnet.helper.UiState
 import com.bpjs.mediconnet.model.DataItem
 import com.bpjs.mediconnet.viewmodel.PharmacyViewModel
-import com.bpjs.mediconnet.viewmodel.ViewModelFactory
 
 
 @Composable
 fun PharmacyScreen(
-    viewModel: PharmacyViewModel = viewModel(factory = ViewModelFactory.getInstance(Injection.provideRepository()))
+    viewModel: PharmacyViewModel = hiltViewModel()
 ) {
-
-
     viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
         when (uiState) {
             is UiState.Loading -> {
@@ -45,12 +41,8 @@ fun PharmacyScreen(
             is UiState.Error -> {
                 Text(text = uiState.errorMessage)
             }
-
-
         }
     }
-
-
 }
 
 @Composable
@@ -81,8 +73,7 @@ fun PharmacyContent(
 @Preview(showBackground = true)
 @Composable
 fun PharmacyScreenPreview() {
-    val viewModel = PharmacyViewModel(Injection.provideRepository())
-    PharmacyScreen(viewModel = viewModel)
+    PharmacyScreen()
 }
 
 

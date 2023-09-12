@@ -44,8 +44,7 @@ fun PharmacyCard(
 ) {
     Card(
         modifier = Modifier
-            .padding(16.dp)
-            .shadow(4.dp, RoundedCornerShape(8.dp)),
+            .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -81,12 +80,12 @@ fun PharmacyCard(
                         )
                     )
 
-                    Icon(
-                        imageVector = Icons.Default.FavoriteBorder,
-                        contentDescription = stringResource(R.string.favorite),
-                        modifier = Modifier.size(24.dp),
-                        tint = Color.Red
-                    )
+//                    Icon(
+//                        imageVector = Icons.Default.FavoriteBorder,
+//                        contentDescription = stringResource(R.string.favorite),
+//                        modifier = Modifier.size(24.dp),
+//                        tint = Color.Red
+//                    )
                 }
 
                 Divider(

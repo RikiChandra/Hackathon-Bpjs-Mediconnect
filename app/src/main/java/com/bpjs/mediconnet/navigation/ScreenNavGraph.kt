@@ -1,11 +1,14 @@
 package com.bpjs.mediconnet.navigation
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.bpjs.mediconnet.di.Injection
+import com.bpjs.mediconnet.repository.PharmacyRepository
+import com.bpjs.mediconnet.screen.PharmacyScreen
+import com.bpjs.mediconnet.viewmodel.PharmacyViewModel
 
 @Composable
 fun ScreenNavGraph(
@@ -22,7 +25,7 @@ fun ScreenNavGraph(
         }
 
         composable(route = BottomNavScreen.Pharmacy.route) {
-
+                PharmacyScreen(viewModel = PharmacyViewModel(Injection.provideRepository()))
         }
 
         composable(route = BottomNavScreen.Medicine.route) {

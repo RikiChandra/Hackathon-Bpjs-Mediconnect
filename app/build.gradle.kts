@@ -1,3 +1,5 @@
+import com.android.build.api.variant.BuildConfigField
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -72,4 +74,17 @@ dependencies {
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.6.0")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
+    //viewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.compose.runtime:runtime-livedata:1.0.4")
+
+    //Animation
+    implementation("androidx.compose.animation:animation:1.0.0")
+
 }

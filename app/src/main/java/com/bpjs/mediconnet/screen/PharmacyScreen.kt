@@ -31,7 +31,7 @@ fun PharmacyScreen(
         when (uiState) {
             is UiState.Loading -> {
                 LazyColumn {
-                    items(10) { index ->
+                    items(10) {
                         ShimmerPharmacyItem()
                         Spacer(modifier = Modifier.height(16.dp))
                     }
@@ -43,10 +43,10 @@ fun PharmacyScreen(
 
             }
             is UiState.Error -> {
-                Text(text = uiState.errorMessage ?: "Error")
+                Text(text = uiState.errorMessage)
             }
 
-            else -> {}
+
         }
     }
 
@@ -55,8 +55,8 @@ fun PharmacyScreen(
 
 @Composable
 fun PharmacyContent(
-    pharmacies: List<DataItem> = emptyList(),
     modifier: Modifier = Modifier,
+    pharmacies: List<DataItem> = emptyList(),
 ) {
 
     Box(modifier = modifier) {
@@ -64,11 +64,11 @@ fun PharmacyContent(
             itemsIndexed(pharmacies) { index, pharmacy ->
                 if (pharmacy != null) {
                     PharmacyCard(
-                        name = pharmacy.nama ?: "",
-                        address = pharmacy.alamat ?: "",
-                        imageUrl = pharmacy.foto ?: "",
-                        rating = pharmacy.rating?.toString()?.toDoubleOrNull() ?: 0.0,
-                        reviewCount = pharmacy.review?.toDouble() ?: 0.0
+                        name = pharmacy.nama ,
+                        address = pharmacy.alamat,
+                        imageUrl = pharmacy.foto ,
+                        rating = pharmacy.rating.toString().toDoubleOrNull() ?: 0.0,
+                        reviewCount = pharmacy.review.toDouble() ?: 0.0
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                 }

@@ -5,5 +5,9 @@
     <string name="star">Star</string>
     <string name="reviews">" (%1$s Reviews)"</string>
     <string name="dummy_content_desc">Dummy String</string>
-    <string name="search_placeholder">Cari...</string>
+    <string name="search_placeholder">Cari…</string>
+    <string name="feedback_popup_title_1">Beri kami </string>
+    <string name="feedback_popup_title_2">Feedback!</string>
+    <string name="feedback_popup_pharmacy_and_medicine">Bagaimana pendapat anda terhadap \nfitur Apotek dan Informasi Obat?</string>
+    <string name="feedback_popup_note">Note: \nPesan anda bersifat anonim</string>
 </resources>

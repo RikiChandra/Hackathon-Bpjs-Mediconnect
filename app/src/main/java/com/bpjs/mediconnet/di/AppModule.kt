@@ -1,6 +1,7 @@
 package com.bpjs.mediconnet.di
 
 import com.bpjs.mediconnet.api.ApiService
+import com.bpjs.mediconnet.repository.FeedbackRepository
 import com.bpjs.mediconnet.repository.PharmacyRepository
 import dagger.Module
 import dagger.Provides
@@ -15,6 +16,10 @@ object AppModule {
     @Singleton
     @Provides
     fun providePharmacyRepository(api: ApiService) = PharmacyRepository(api)
+
+    @Singleton
+    @Provides
+    fun provideFeedbackRepository() = FeedbackRepository()
 
     @Singleton
     @Provides

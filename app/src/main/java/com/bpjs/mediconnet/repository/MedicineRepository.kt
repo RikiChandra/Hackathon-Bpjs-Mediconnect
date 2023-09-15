@@ -16,4 +16,10 @@ class MedicineRepository @Inject constructor(private val api: ApiService){
         val dataMedicine = api.getMedicine().data
         return flowOf(dataMedicine)
     }
+
+    suspend fun getDetailMedicine(id: String): Flow<Medicine> {
+        val dataMedicine = api.getDetailMedicine(id).data
+        Log.d("Repository", "getDetailMedicine: $dataMedicine")
+        return flowOf(dataMedicine)
+    }
 }

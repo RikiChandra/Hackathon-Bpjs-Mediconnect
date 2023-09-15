@@ -1,6 +1,5 @@
 package com.bpjs.mediconnet.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bpjs.mediconnet.helper.UiState
@@ -25,10 +24,8 @@ class PharmacyViewModel @Inject constructor(
         viewModelScope.launch {
             repository.getAllPharmacies().catch {
                 _uiState.value = UiState.Error(it.message.toString())
-                Log.d("PharmacyViewModel", "getPharmacies: ${it.message.toString()}")
             }.collect {
                 _uiState.value = UiState.Success(it)
-                Log.d("PharmacyViewModel", "getPharmacies: ${it.size}")
             }
         }
     }

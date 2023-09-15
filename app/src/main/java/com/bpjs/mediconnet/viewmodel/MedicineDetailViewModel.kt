@@ -1,6 +1,5 @@
 package com.bpjs.mediconnet.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bpjs.mediconnet.helper.UiState
@@ -26,7 +25,6 @@ class MedicineDetailViewModel
                 _dataMedicine.value = UiState.Error(exception.message.toString())
             }.collect { data ->
                 _dataMedicine.value = UiState.Success(data)
-                Log.d("ViewModel", "getDetailMedicine: ${_dataMedicine.value}")
             }
         }
     }

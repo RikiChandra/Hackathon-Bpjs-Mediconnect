@@ -1,5 +1,6 @@
 package com.bpjs.mediconnet.api
 
+import com.bpjs.mediconnet.model.MedicineResponse
 import com.bpjs.mediconnet.model.PharmacyResponse
 import com.bpjs.mediconnet.model.feedbackModel.ReviewResponse
 import retrofit2.http.Field
@@ -17,4 +18,7 @@ interface ApiService {
 
     @GET("feedback")
     suspend fun getFeedback(): ReviewResponse
+
+    @GET("obat")
+    suspend fun getMedicine(): MedicineResponse
 }

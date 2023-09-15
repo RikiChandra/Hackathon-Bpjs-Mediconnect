@@ -40,7 +40,7 @@ fun MedicineCard(
 ) {
     Card(
         modifier = modifier
-            .padding(16.dp)
+            .padding(8.dp)
             .size(width = 240.dp, height = 300.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant

@@ -1,5 +1,6 @@
 package com.bpjs.mediconnet.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,7 +29,8 @@ import com.bpjs.mediconnet.viewmodel.MedicineViewModel
 
 @Composable
 fun MedicineScreen(
-    viewModel: MedicineViewModel = hiltViewModel()
+    viewModel: MedicineViewModel = hiltViewModel(),
+    navigateToDetail: (String) -> Unit
 ) {
     Column {
         HeaderScreen(
@@ -41,7 +43,7 @@ fun MedicineScreen(
         )
 
         viewModel.dataMedicine.collectAsState(initial = UiState.Loading).value.let { uiState ->
-            when(uiState) {
+            when (uiState) {
                 is UiState.Loading -> {
                     viewModel.getMedicine()
                     Box(
@@ -51,9 +53,14 @@ fun MedicineScreen(
                         CircularProgressIndicator()
                     }
                 }
+
                 is UiState.Success -> {
-                    MedicineContent(dataMedicine = uiState.data)
+                    MedicineContent(
+                        dataMedicine = uiState.data,
+                        navigateToDetail = navigateToDetail
+                    )
                 }
+
                 is UiState.Error -> {
                     Box(
                         modifier = Modifier.fillMaxSize(),
@@ -69,17 +76,21 @@ fun MedicineScreen(
 
 @Composable
 fun MedicineContent(
-    dataMedicine: List<Medicine>
+    dataMedicine: List<Medicine>,
+    navigateToDetail: (String) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 140.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        items(dataMedicine, key = { it.id}) { medicine ->
+        items(dataMedicine, key = { it.id }) { medicine ->
             MedicineCard(
                 name = medicine.nama,
                 description = medicine.deskripsi,
-                imageUrl = medicine.foto)
+                imageUrl = medicine.foto,
+                modifier = Modifier.clickable {
+                    navigateToDetail(medicine.id)
+                })
         }
     }
 }
@@ -88,6 +99,6 @@ fun MedicineContent(
 @Composable
 fun MedicineScreenPreview() {
     MediconnetTheme {
-        MedicineScreen()
+        MedicineScreen(navigateToDetail = {})
     }
 }

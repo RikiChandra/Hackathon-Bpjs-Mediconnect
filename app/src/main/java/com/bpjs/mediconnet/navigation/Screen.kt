@@ -8,4 +8,10 @@ sealed class Screen(
     object ChatBot: Screen(
         route = "chatbot",
     )
+
+    object DetailMedicine: Screen(
+        route = "detail_medicine/{medicineId}",
+    ) {
+        fun createRoute(medicineId: String) = "detail_medicine/$medicineId"
+    }
 }

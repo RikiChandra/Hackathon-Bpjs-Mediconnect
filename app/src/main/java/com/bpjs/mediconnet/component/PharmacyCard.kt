@@ -95,13 +95,14 @@ fun PharmacyCard(
 
                 Text(
                     text = address,
+                    maxLines =1,
                     modifier = Modifier.padding(bottom = 8.dp),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = Color.Gray
                     )
                 )
 
-                Rating(rating, reviewCount)
+                Rating(modifier,rating, reviewCount)
             }
         }
     }
@@ -109,6 +110,7 @@ fun PharmacyCard(
 
 @Composable
 fun Rating(
+    modifier: Modifier,
     rating: Double,
     reviewCount: Double,
 ) {

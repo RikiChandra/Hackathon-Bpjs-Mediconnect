@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -58,9 +58,6 @@ fun PharmacyScreen(
                 is UiState.Error -> {
                     Text(text = uiState.errorMessage)
                 }
-
-                else -> {}
-
             }
         }
     }
@@ -75,20 +72,18 @@ fun PharmacyContent(
 
     Box(modifier = modifier) {
         LazyColumn {
-            itemsIndexed(pharmacies) { index, pharmacy ->
-                if (pharmacy != null) {
-                    PharmacyCard(
-                        name = pharmacy.nama ,
-                        address = pharmacy.alamat,
-                        imageUrl = pharmacy.foto ,
-                        rating = pharmacy.rating.toString().toDoubleOrNull() ?: 0.0,
-                        reviewCount = pharmacy.review.toDouble() ?: 0.0,
-                        modifier = Modifier.clickable {
-                            navigateToDetail(pharmacy.id)
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                }
+            items(pharmacies) {pharmacy ->
+                PharmacyCard(
+                    name = pharmacy.nama ,
+                    address = pharmacy.alamat,
+                    imageUrl = pharmacy.foto ,
+                    rating = pharmacy.rating.toString().toDoubleOrNull() ?: 0.0,
+                    reviewCount = pharmacy.review.toDouble(),
+                    modifier = Modifier.clickable {
+                        navigateToDetail(pharmacy.id)
+                    }
+                )
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.bpjs.mediconnet.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -8,6 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.bpjs.mediconnet.screen.FeedbackDetailScreen
 import com.bpjs.mediconnet.screen.FeedbackScreen
 import com.bpjs.mediconnet.screen.MedicineDetailScreen
 import com.bpjs.mediconnet.screen.MedicineScreen
@@ -39,7 +39,10 @@ fun ScreenNavGraph(
         }
 
 
-        composable(route = Screen.DetailPharmacy.route, arguments = listOf(navArgument("pharmacyId") { type = NavType.StringType })) {
+        composable(
+            route = Screen.DetailPharmacy.route,
+            arguments = listOf(navArgument("pharmacyId") { type = NavType.StringType })
+        ) {
             val id = it.arguments?.getString("pharmacyId")
             PharmacyDetailScreen(pharmacyId = id!!, navController = navController)
 
@@ -62,7 +65,13 @@ fun ScreenNavGraph(
         }
 
         composable(route = BottomNavScreen.Feedback.route) {
-            FeedbackScreen()
+            FeedbackScreen {
+                navController.navigate(Screen.FeedbackDetail.route)
+            }
+        }
+
+        composable(route = Screen.FeedbackDetail.route) {
+            FeedbackDetailScreen()
         }
     }
 }

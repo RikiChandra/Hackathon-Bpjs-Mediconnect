@@ -11,6 +11,7 @@ import androidx.navigation.navArgument
 import com.bpjs.mediconnet.screen.FeedbackScreen
 import com.bpjs.mediconnet.screen.MedicineDetailScreen
 import com.bpjs.mediconnet.screen.MedicineScreen
+import com.bpjs.mediconnet.screen.PharmacyDetailScreen
 import com.bpjs.mediconnet.screen.PharmacyScreen
 
 @Composable
@@ -28,7 +29,20 @@ fun ScreenNavGraph(
         }
 
         composable(route = BottomNavScreen.Pharmacy.route) {
-            PharmacyScreen()
+            PharmacyScreen(
+                navigateToDetail = { pharmacyId ->
+                    navController.navigate(
+                        Screen.DetailPharmacy.createRoute(pharmacyId)
+                    )
+                }
+            )
+        }
+
+
+        composable(route = Screen.DetailPharmacy.route, arguments = listOf(navArgument("pharmacyId") { type = NavType.StringType })) {
+            val id = it.arguments?.getString("pharmacyId")
+            PharmacyDetailScreen(pharmacyId = id!!, navController = navController)
+
         }
 
         composable(route = BottomNavScreen.Medicine.route) {

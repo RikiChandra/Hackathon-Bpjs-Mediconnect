@@ -3,6 +3,7 @@ package com.bpjs.mediconnet.api
 import com.bpjs.mediconnet.model.Medicine
 import com.bpjs.mediconnet.model.MedicineDetailResponse
 import com.bpjs.mediconnet.model.MedicineResponse
+import com.bpjs.mediconnet.model.PharmacyDetailResponses
 import com.bpjs.mediconnet.model.PharmacyResponse
 import com.bpjs.mediconnet.model.feedbackModel.ReviewResponse
 import retrofit2.http.Field
@@ -29,4 +30,9 @@ interface ApiService {
     suspend fun getDetailMedicine(
         @Path("id") id: String,
     ): MedicineDetailResponse
+
+    @GET("apotek/{id}")
+    suspend fun getPharmacyById(
+        @Path("id") id: String
+    ): PharmacyDetailResponses
 }

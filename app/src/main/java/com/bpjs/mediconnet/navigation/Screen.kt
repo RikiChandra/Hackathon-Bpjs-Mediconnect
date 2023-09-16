@@ -14,4 +14,11 @@ sealed class Screen(
     ) {
         fun createRoute(medicineId: String) = "detail_medicine/$medicineId"
     }
+
+    object DetailPharmacy:Screen(
+        route = "detail_pharmacy/{pharmacyId}",
+    ) {
+        fun createRoute(pharmacyId: String) = "detail_pharmacy/$pharmacyId"
+    }
+
 }

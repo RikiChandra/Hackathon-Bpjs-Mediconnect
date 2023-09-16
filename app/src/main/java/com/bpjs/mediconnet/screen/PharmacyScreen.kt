@@ -1,5 +1,6 @@
 package com.bpjs.mediconnet.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +26,8 @@ import com.bpjs.mediconnet.viewmodel.PharmacyViewModel
 
 @Composable
 fun PharmacyScreen(
-    viewModel: PharmacyViewModel = hiltViewModel()
+    viewModel: PharmacyViewModel = hiltViewModel(),
+    navigateToDetail: (String) -> Unit
 ) {
     Column {
         HeaderScreen(
@@ -48,7 +50,7 @@ fun PharmacyScreen(
                     viewModel.getPharmacies()
                 }
                 is UiState.Success -> {
-                    PharmacyContent(pharmacies = uiState.data)
+                    PharmacyContent(pharmacies = uiState.data, navigateToDetail = navigateToDetail)
 
                 }
                 is UiState.Error -> {
@@ -66,6 +68,7 @@ fun PharmacyScreen(
 fun PharmacyContent(
     modifier: Modifier = Modifier,
     pharmacies: List<DataItem> = emptyList(),
+    navigateToDetail: (String) -> Unit
 ) {
 
     Box(modifier = modifier) {
@@ -77,7 +80,10 @@ fun PharmacyContent(
                         address = pharmacy.alamat,
                         imageUrl = pharmacy.foto ,
                         rating = pharmacy.rating.toString().toDoubleOrNull() ?: 0.0,
-                        reviewCount = pharmacy.review.toDouble() ?: 0.0
+                        reviewCount = pharmacy.review.toDouble() ?: 0.0,
+                        modifier = Modifier.clickable {
+                            navigateToDetail(pharmacy.id)
+                        }
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                 }
@@ -90,7 +96,9 @@ fun PharmacyContent(
 @Preview(showBackground = true)
 @Composable
 fun PharmacyScreenPreview() {
-    PharmacyScreen()
+    PharmacyScreen(
+        navigateToDetail = {}
+    )
 }
 
 

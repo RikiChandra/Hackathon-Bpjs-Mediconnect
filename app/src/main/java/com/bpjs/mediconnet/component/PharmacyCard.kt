@@ -41,9 +41,10 @@ fun PharmacyCard(
     imageUrl: String,
     rating: Double,
     reviewCount: Double,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White

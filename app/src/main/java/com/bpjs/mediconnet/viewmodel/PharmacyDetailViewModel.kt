@@ -12,21 +12,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PharmacyViewModel @Inject constructor(
-    private val repository: PharmacyRepository
-) : ViewModel() {
+class PharmacyDetailViewModel
+@Inject constructor(private val repository: PharmacyRepository) : ViewModel()
+{
+    private val _dataPharmacy: MutableStateFlow<UiState<DataItem>> = MutableStateFlow(UiState.Loading)
+    val dataPharmacy: MutableStateFlow<UiState<DataItem>> = _dataPharmacy
 
-    private val _uiState: MutableStateFlow<UiState<List<DataItem>>> =
-        MutableStateFlow(UiState.Loading)
-    val uiState: MutableStateFlow<UiState<List<DataItem>>> = _uiState
-
-    fun getPharmacies() {
+    fun getDetailPharmacy(id: String){
         viewModelScope.launch {
-            repository.getAllPharmacies().catch {
-                _uiState.value = UiState.Error(it.message.toString())
+            repository.getDetailPharmacies(id).catch {
+                _dataPharmacy.value = UiState.Error(it.message.toString())
             }.collect {
-                _uiState.value = UiState.Success(it)
+                _dataPharmacy.value = UiState.Success(it)
             }
         }
     }
+
+
 }

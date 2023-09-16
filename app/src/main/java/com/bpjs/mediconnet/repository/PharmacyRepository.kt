@@ -16,4 +16,9 @@ class PharmacyRepository @Inject constructor(
         val data = apiService.getPharmacy()
        return flowOf(data.data)
     }
+
+    suspend fun getDetailPharmacies(id: String): Flow<DataItem> {
+        val data = apiService.getPharmacyById(id)
+        return flowOf(data.data)
+    }
 }

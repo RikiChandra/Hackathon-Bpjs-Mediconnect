@@ -23,7 +23,11 @@ import com.bpjs.mediconnet.model.feedbackModel.Feedback
 import com.bpjs.mediconnet.viewmodel.FeedbackViewModel
 
 @Composable
-fun FeedbackScreen(modifier: Modifier = Modifier, viewModel: FeedbackViewModel = hiltViewModel()) {
+fun FeedbackScreen(
+    modifier: Modifier = Modifier,
+    viewModel: FeedbackViewModel = hiltViewModel(),
+    onClick: () -> Unit
+) {
     Column(
         modifier = Modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,7 +47,8 @@ fun FeedbackScreen(modifier: Modifier = Modifier, viewModel: FeedbackViewModel =
 
                 is UiState.Success -> {
                     FeedbackContent(
-                        feedback = uiState.data
+                        feedback = uiState.data,
+                        onClick = onClick
                     )
                 }
 
@@ -58,6 +63,7 @@ fun FeedbackScreen(modifier: Modifier = Modifier, viewModel: FeedbackViewModel =
 @Composable
 fun FeedbackContent(
     feedback: List<Feedback>,
+    onClick: () -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -68,7 +74,8 @@ fun FeedbackContent(
         items(feedback) {
             FeedbackCard(
                 name = it.name,
-                imagePainter = it.imageSource
+                imagePainter = it.imageSource,
+                onClick = onClick
             )
         }
     }

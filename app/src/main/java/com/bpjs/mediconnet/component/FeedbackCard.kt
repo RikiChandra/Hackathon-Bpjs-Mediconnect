@@ -2,6 +2,7 @@ package com.bpjs.mediconnet.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,12 @@ import androidx.compose.ui.unit.sp
 import com.bpjs.mediconnet.R
 
 @Composable
-fun FeedbackCard(name: String, imagePainter: Int, modifier: Modifier = Modifier) {
+fun FeedbackCard(
+    name: String,
+    imagePainter: Int,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Box(
         modifier = modifier
             .size(
@@ -40,6 +46,9 @@ fun FeedbackCard(name: String, imagePainter: Int, modifier: Modifier = Modifier)
                 ),
                 shape = RoundedCornerShape(12.dp)
             )
+            .clickable {
+                onClick()
+            }
 
     ) {
         Column(
@@ -67,5 +76,8 @@ fun FeedbackCard(name: String, imagePainter: Int, modifier: Modifier = Modifier)
 @Preview
 @Composable
 fun FeedbackCardPreview() {
-    FeedbackCard(name = "Keluhan dan Pelayanan", imagePainter = R.drawable.ic_launcher_background)
+    FeedbackCard(
+        name = "Keluhan dan Pelayanan",
+        imagePainter = R.drawable.ic_launcher_background,
+        onClick = {})
 }

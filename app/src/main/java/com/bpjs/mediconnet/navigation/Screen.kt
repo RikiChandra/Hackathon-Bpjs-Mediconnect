@@ -8,4 +8,8 @@ sealed class Screen(
     object ChatBot: Screen(
         route = "chatbot",
     )
+
+    object FeedbackDetail: Screen(
+        route = "feedbackDetail"
+    )
 }

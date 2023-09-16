@@ -18,10 +18,10 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("feedback")
-    suspend fun postFeedback(@Field("review") review: String, @Field("rating") rating: Double)
-
-    @GET("feedback")
-    suspend fun getFeedback(): ReviewResponse
+    suspend fun postFeedback(
+        @Field("rating") rating: Int,
+        @Field("review") review: String
+    ): ReviewResponse
 
     @GET("obat")
     suspend fun getMedicine(): MedicineResponse

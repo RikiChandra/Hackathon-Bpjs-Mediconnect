@@ -65,13 +65,21 @@ fun ScreenNavGraph(
         }
 
         composable(route = BottomNavScreen.Feedback.route) {
-            FeedbackScreen {
-                navController.navigate(Screen.FeedbackDetail.route)
-            }
+            FeedbackScreen(
+                navigateToDetail = { feedbackId ->
+                    navController.navigate(Screen.FeedbackDetail.createRoute(feedbackId))
+                }
+            )
         }
 
-        composable(route = Screen.FeedbackDetail.route) {
-            FeedbackDetailScreen()
+        composable(
+            route = Screen.FeedbackDetail.route,
+            arguments = listOf(navArgument("feedbackId") {
+                type = NavType.LongType
+            })
+        ) {
+            val feedbackId = it.arguments?.getLong("feedbackId") ?: -1L
+            FeedbackDetailScreen(feedbackId = feedbackId, navController = navController)
         }
     }
 }

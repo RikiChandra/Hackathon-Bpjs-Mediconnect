@@ -11,4 +11,5 @@
     <string name="feedback_popup_pharmacy_and_medicine">Bagaimana pendapat anda terhadap \nfitur Apotek dan Informasi Obat?</string>
     <string name="feedback_popup_note">Note: \nPesan anda bersifat anonim</string>
     <string name="feedback_thought">Isi pendapat anda</string>
+    <string name="feedback_button_title">KIRIM UMPAN BALIK</string>
 </resources>

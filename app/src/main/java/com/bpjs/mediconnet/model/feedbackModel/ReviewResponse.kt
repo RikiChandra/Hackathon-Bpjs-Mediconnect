@@ -2,11 +2,12 @@ package com.bpjs.mediconnet.model.feedbackModel
 
 data class ReviewResponse(
     val status: String,
-    val data: List<ReviewItem>
+    val data: Data
 )
 
-data class ReviewItem(
-    val _id: String,
-    val rating: Double,
+data class Data(
+    val rating: Int,
     val review: String,
+    val _id: String,
+    val __v: Int
 )

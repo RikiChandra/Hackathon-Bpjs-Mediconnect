@@ -20,7 +20,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideFeedbackRepository() = FeedbackRepository()
+    fun provideFeedbackRepository(api: ApiService) = FeedbackRepository(api)
 
     @Singleton
     @Provides

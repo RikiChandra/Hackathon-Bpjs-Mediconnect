@@ -20,7 +20,9 @@ fun MediConnectScreen(navController: NavHostController = rememberNavController()
     val currentRoute = navBackStackEntry?.destination?.route
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.DetailMedicine.route && currentRoute != Screen.DetailPharmacy.route) BottomNav(navController = navController)
+            if (currentRoute != Screen.DetailMedicine.route && currentRoute != Screen.DetailPharmacy.route && currentRoute != Screen.FeedbackDetail.route) BottomNav(
+                navController = navController
+            )
         }
     ) { innerPadding ->
         ScreenNavGraph(

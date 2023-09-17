@@ -222,6 +222,9 @@ fun PharmacyDetailContent(
             Spacer(modifier = Modifier.height(36.dp))
             OpenMapButton(pharmacy = pharmacy)
         }
+        item {
+            Spacer(modifier = Modifier.height(8.dp))
+        }
     }
 
 }

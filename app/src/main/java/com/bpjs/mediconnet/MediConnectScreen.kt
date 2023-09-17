@@ -28,7 +28,7 @@ fun MediConnectScreen(navController: NavHostController = rememberNavController()
     val currentRoute = navBackStackEntry?.destination?.route
 
     val mainRoutes = listOf(
-        Screen.OnBoarding.route,
+//        Screen.OnBoarding.route,
         Screen.DetailPharmacy.route,
         Screen.DetailMedicine.route,
         Screen.FeedbackDetail.route

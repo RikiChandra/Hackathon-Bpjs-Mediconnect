@@ -28,7 +28,7 @@ fun ScreenNavGraph(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = startDestination,
+        startDestination = startDestination
     ) {
 
         composable(route = Screen.OnBoarding.route) {

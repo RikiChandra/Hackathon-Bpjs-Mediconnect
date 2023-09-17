@@ -58,6 +58,7 @@ fun PharmacyScreen(
                 is UiState.Error -> {
                     Text(text = uiState.errorMessage)
                 }
+                else -> {}
             }
         }
     }

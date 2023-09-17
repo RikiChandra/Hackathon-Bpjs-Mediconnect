@@ -24,4 +24,9 @@ sealed class Screen(
     ) {
         fun createRoute(pharmacyId: String) = "detail_pharmacy/$pharmacyId"
     }
+
+    object OnBoarding : Screen(
+        route = "onboarding_screen",
+    )
+
 }

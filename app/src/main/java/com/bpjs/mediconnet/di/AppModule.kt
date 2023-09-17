@@ -1,12 +1,15 @@
 package com.bpjs.mediconnet.di
 
+import android.content.Context
 import com.bpjs.mediconnet.api.ApiService
+import com.bpjs.mediconnet.repository.DataStoreRepository
 import com.bpjs.mediconnet.repository.FeedbackRepository
 import com.bpjs.mediconnet.repository.MedicineRepository
 import com.bpjs.mediconnet.repository.PharmacyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -25,6 +28,12 @@ object AppModule {
     @Singleton
     @Provides
     fun provideMedicineRepository(api: ApiService) = MedicineRepository(api)
+
+    @Provides
+    @Singleton
+    fun provideDataStoreRepository(
+        @ApplicationContext context: Context
+    ) = DataStoreRepository(context = context)
 
     @Singleton
     @Provides

@@ -1,5 +1,6 @@
 package com.bpjs.mediconnet.navigation
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -11,19 +12,29 @@ import com.bpjs.mediconnet.screen.FeedbackDetailScreen
 import com.bpjs.mediconnet.screen.FeedbackScreen
 import com.bpjs.mediconnet.screen.MedicineDetailScreen
 import com.bpjs.mediconnet.screen.MedicineScreen
+import com.bpjs.mediconnet.screen.OnBoardingScreen
 import com.bpjs.mediconnet.screen.PharmacyDetailScreen
 import com.bpjs.mediconnet.screen.PharmacyScreen
+import com.google.accompanist.pager.ExperimentalPagerApi
 
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
 @Composable
 fun ScreenNavGraph(
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    startDestination: String
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = BottomNavScreen.Home.route,
+        startDestination = startDestination,
     ) {
+
+        composable(route = Screen.OnBoarding.route) {
+            OnBoardingScreen(navController = navController)
+        }
+
         composable(route = BottomNavScreen.Home.route) {
 
         }

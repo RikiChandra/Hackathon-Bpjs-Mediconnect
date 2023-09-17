@@ -1,5 +1,6 @@
 package com.bpjs.mediconnet
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -12,22 +13,35 @@ import androidx.navigation.compose.rememberNavController
 import com.bpjs.mediconnet.elements.BottomNav
 import com.bpjs.mediconnet.navigation.Screen
 import com.bpjs.mediconnet.navigation.ScreenNavGraph
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 @OptIn(ExperimentalMaterial3Api::class)
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
 @Composable
-fun MediConnectScreen(navController: NavHostController = rememberNavController()) {
+fun MediConnectScreen(navController: NavHostController = rememberNavController(), screen: String) {
+
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
+    val mainRoutes = listOf(
+        Screen.OnBoarding.route,
+        Screen.DetailPharmacy.route,
+        Screen.DetailMedicine.route,
+        Screen.FeedbackDetail.route
+    )
+
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.DetailMedicine.route && currentRoute != Screen.DetailPharmacy.route && currentRoute != Screen.FeedbackDetail.route) BottomNav(
+            if (currentRoute !in mainRoutes) BottomNav(
                 navController = navController
             )
         }
     ) { innerPadding ->
         ScreenNavGraph(
             modifier = Modifier.padding(innerPadding),
-            navController = navController
+            navController = navController,
+            startDestination = screen
         )
     }
 }

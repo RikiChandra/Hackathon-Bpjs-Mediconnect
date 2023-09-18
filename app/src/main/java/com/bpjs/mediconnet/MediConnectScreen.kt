@@ -31,7 +31,7 @@ fun MediConnectScreen(navController: NavHostController = rememberNavController()
 //        Screen.OnBoarding.route,
         Screen.DetailPharmacy.route,
         Screen.DetailMedicine.route,
-        Screen.FeedbackDetail.route
+        Screen.FeedbackDetail.route,
     )
 
     Scaffold(

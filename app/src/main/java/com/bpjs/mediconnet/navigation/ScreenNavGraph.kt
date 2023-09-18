@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.bpjs.mediconnet.screen.FeedbackDetailScreen
 import com.bpjs.mediconnet.screen.FeedbackScreen
+import com.bpjs.mediconnet.screen.HomeScreen
 import com.bpjs.mediconnet.screen.MedicineDetailScreen
 import com.bpjs.mediconnet.screen.MedicineScreen
 import com.bpjs.mediconnet.screen.OnBoardingScreen
@@ -36,7 +37,7 @@ fun ScreenNavGraph(
         }
 
         composable(route = BottomNavScreen.Home.route) {
-
+            HomeScreen()
         }
 
         composable(route = BottomNavScreen.Pharmacy.route) {

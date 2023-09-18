@@ -37,7 +37,18 @@ fun ScreenNavGraph(
         }
 
         composable(route = BottomNavScreen.Home.route) {
-            HomeScreen()
+            HomeScreen(
+                navigateToMedicine = { medicineId ->
+                    navController.navigate(
+                        Screen.DetailMedicine.createRoute(medicineId)
+                    )
+                },
+                navigateToPharmacy = { pharmacyId ->
+                    navController.navigate(
+                        Screen.DetailPharmacy.createRoute(pharmacyId)
+                    )
+                }
+            )
         }
 
         composable(route = BottomNavScreen.Pharmacy.route) {

@@ -8,6 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.bpjs.mediconnet.screen.ChatBotScreen
 import com.bpjs.mediconnet.screen.FeedbackScreen
 import com.bpjs.mediconnet.screen.MedicineDetailScreen
 import com.bpjs.mediconnet.screen.MedicineScreen
@@ -35,6 +36,9 @@ fun ScreenNavGraph(
             MedicineScreen(
                 navigateToDetail = { medicineId ->
                     navController.navigate(Screen.DetailMedicine.createRoute(medicineId))
+                },
+                onClickChat = {
+                    navController.navigate(Screen.ChatBot.route)
                 }
             )
         }
@@ -49,6 +53,10 @@ fun ScreenNavGraph(
 
         composable(route = BottomNavScreen.Feedback.route) {
             FeedbackScreen()
+        }
+
+        composable(route = Screen.ChatBot.route) {
+            ChatBotScreen(navController = navController)
         }
     }
 }

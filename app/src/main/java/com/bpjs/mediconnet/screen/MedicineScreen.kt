@@ -29,13 +29,14 @@ import com.bpjs.mediconnet.viewmodel.MedicineViewModel
 @Composable
 fun MedicineScreen(
     viewModel: MedicineViewModel = hiltViewModel(),
-    navigateToDetail: (String) -> Unit
+    navigateToDetail: (String) -> Unit,
+    onClickChat: () -> Unit,
 ) {
     Column {
         HeaderScreen(
             query = "",
             onQueryChange = {},
-            onClickChat = {},
+            onClickChat = onClickChat,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 10.dp)
@@ -98,6 +99,6 @@ fun MedicineContent(
 @Composable
 fun MedicineScreenPreview() {
     MediconnetTheme {
-        MedicineScreen(navigateToDetail = {})
+        MedicineScreen(navigateToDetail = {}, onClickChat = {})
     }
 }

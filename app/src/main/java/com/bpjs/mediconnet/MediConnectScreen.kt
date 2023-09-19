@@ -18,9 +18,15 @@ import com.bpjs.mediconnet.navigation.ScreenNavGraph
 fun MediConnectScreen(navController: NavHostController = rememberNavController()) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
+    val screenWihoutNavBar = listOf(
+        Screen.DetailMedicine.route,
+        Screen.ChatBot.route
+    )
+
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.DetailMedicine.route) BottomNav(navController = navController)
+            if (currentRoute !in screenWihoutNavBar) BottomNav(navController = navController)
         }
     ) { innerPadding ->
         ScreenNavGraph(

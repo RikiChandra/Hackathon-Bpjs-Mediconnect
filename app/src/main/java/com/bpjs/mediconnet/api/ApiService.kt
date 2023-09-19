@@ -1,6 +1,5 @@
 package com.bpjs.mediconnet.api
 
-import com.bpjs.mediconnet.model.Medicine
 import com.bpjs.mediconnet.model.MedicineDetailResponse
 import com.bpjs.mediconnet.model.MedicineResponse
 import com.bpjs.mediconnet.model.PharmacyResponse

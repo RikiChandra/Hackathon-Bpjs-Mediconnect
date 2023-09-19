@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -51,7 +52,7 @@ fun HeaderScreen(
             ) {
                 Image(
                     modifier = Modifier.size(60.dp),
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                    imageVector = Icons.Default.Person,
                     contentDescription = null
                 )
                 Text(text = "Hello, Welcome👋", color = Color.White)

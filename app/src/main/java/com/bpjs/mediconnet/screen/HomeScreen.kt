@@ -39,7 +39,8 @@ fun HomeScreen(
     pharmacyViewModel: PharmacyViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
     navigateToPharmacy: (String) -> Unit,
-    navigateToMedicine: (String) -> Unit
+    navigateToMedicine: (String) -> Unit,
+    onClickChat: () -> Unit,
 ) {
     val sicknessChips = listOf(
         "Demam Tinggi",
@@ -53,7 +54,7 @@ fun HomeScreen(
             HeaderScreen(
                 query = "",
                 onQueryChange = {},
-                onClickChat = {},
+                onClickChat = onClickChat,
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(bottom = 10.dp)

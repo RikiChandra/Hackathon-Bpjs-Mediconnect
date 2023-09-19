@@ -48,6 +48,9 @@ fun ScreenNavGraph(
                     navController.navigate(
                         Screen.DetailPharmacy.createRoute(pharmacyId)
                     )
+                },
+                onClickChat = {
+                    navController.navigate(Screen.ChatBot.route)
                 }
             )
         }
@@ -58,6 +61,9 @@ fun ScreenNavGraph(
                     navController.navigate(
                         Screen.DetailPharmacy.createRoute(pharmacyId)
                     )
+                },
+                onClickChat = {
+                    navController.navigate(Screen.ChatBot.route)
                 }
             )
         }

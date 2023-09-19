@@ -29,14 +29,16 @@ import com.bpjs.mediconnet.viewmodel.PharmacyViewModel
 @Composable
 fun PharmacyScreen(
     viewModel: PharmacyViewModel = hiltViewModel(),
-    navigateToDetail: (String) -> Unit
+    navigateToDetail: (String) -> Unit,
+    onClickChat: () -> Unit,
 ) {
     Column {
         HeaderScreen(
             query = "",
             onQueryChange = {},
-            onClickChat = {},
-            modifier = Modifier.fillMaxWidth()
+            onClickChat = onClickChat,
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(bottom = 10.dp)
         )
 
@@ -51,13 +53,16 @@ fun PharmacyScreen(
                         CircularProgressIndicator()
                     }
                 }
+
                 is UiState.Success -> {
                     PharmacyContent(pharmacies = uiState.data, navigateToDetail = navigateToDetail)
 
                 }
+
                 is UiState.Error -> {
                     Text(text = uiState.errorMessage)
                 }
+
                 else -> {}
             }
         }
@@ -73,11 +78,11 @@ fun PharmacyContent(
 
     Box(modifier = modifier) {
         LazyColumn {
-            items(pharmacies) {pharmacy ->
+            items(pharmacies) { pharmacy ->
                 PharmacyCard(
-                    name = pharmacy.nama ,
+                    name = pharmacy.nama,
                     address = pharmacy.alamat,
-                    imageUrl = pharmacy.foto ,
+                    imageUrl = pharmacy.foto,
                     rating = pharmacy.rating.toString().toDoubleOrNull() ?: 0.0,
                     reviewCount = pharmacy.review.toDouble(),
                     modifier = Modifier.clickable {
@@ -89,16 +94,3 @@ fun PharmacyContent(
         }
     }
 }
-
-
-@Preview(showBackground = true)
-@Composable
-fun PharmacyScreenPreview() {
-    PharmacyScreen(
-        navigateToDetail = {}
-    )
-}
-
-
-
-

@@ -2,6 +2,7 @@ package com.bpjs.mediconnet.api
 
 import com.bpjs.mediconnet.model.MedicineDetailResponse
 import com.bpjs.mediconnet.model.MedicineResponse
+import com.bpjs.mediconnet.model.PharmacyDetailResponses
 import com.bpjs.mediconnet.model.PharmacyResponse
 import com.bpjs.mediconnet.model.feedbackModel.ReviewResponse
 import retrofit2.http.Field
@@ -16,10 +17,10 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("feedback")
-    suspend fun postFeedback(@Field("review") review: String, @Field("rating") rating: Double)
-
-    @GET("feedback")
-    suspend fun getFeedback(): ReviewResponse
+    suspend fun postFeedback(
+        @Field("rating") rating: Int,
+        @Field("review") review: String
+    ): ReviewResponse
 
     @GET("obat")
     suspend fun getMedicine(): MedicineResponse
@@ -28,4 +29,9 @@ interface ApiService {
     suspend fun getDetailMedicine(
         @Path("id") id: String,
     ): MedicineDetailResponse
+
+    @GET("apotek/{id}")
+    suspend fun getPharmacyById(
+        @Path("id") id: String
+    ): PharmacyDetailResponses
 }

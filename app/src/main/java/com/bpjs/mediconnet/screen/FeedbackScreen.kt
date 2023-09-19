@@ -1,5 +1,6 @@
 package com.bpjs.mediconnet.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,7 +24,11 @@ import com.bpjs.mediconnet.model.feedbackModel.Feedback
 import com.bpjs.mediconnet.viewmodel.FeedbackViewModel
 
 @Composable
-fun FeedbackScreen(modifier: Modifier = Modifier, viewModel: FeedbackViewModel = hiltViewModel()) {
+fun FeedbackScreen(
+    modifier: Modifier = Modifier,
+    viewModel: FeedbackViewModel = hiltViewModel(),
+    navigateToDetail: (Long) -> Unit
+) {
     Column(
         modifier = Modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,7 +48,8 @@ fun FeedbackScreen(modifier: Modifier = Modifier, viewModel: FeedbackViewModel =
 
                 is UiState.Success -> {
                     FeedbackContent(
-                        feedback = uiState.data
+                        feedback = uiState.data,
+                        navigateToDetail = navigateToDetail
                     )
                 }
 
@@ -58,6 +64,7 @@ fun FeedbackScreen(modifier: Modifier = Modifier, viewModel: FeedbackViewModel =
 @Composable
 fun FeedbackContent(
     feedback: List<Feedback>,
+    navigateToDetail: (Long) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -68,7 +75,10 @@ fun FeedbackContent(
         items(feedback) {
             FeedbackCard(
                 name = it.name,
-                imagePainter = it.imageSource
+                imagePainter = it.imageSource,
+                modifier = Modifier.clickable {
+                    navigateToDetail(it.id)
+                }
             )
         }
     }

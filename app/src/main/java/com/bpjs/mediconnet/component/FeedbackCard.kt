@@ -16,7 +16,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -28,7 +27,11 @@ import androidx.compose.ui.unit.sp
 import com.bpjs.mediconnet.R
 
 @Composable
-fun FeedbackCard(name: String, imagePainter: Int, modifier: Modifier = Modifier) {
+fun FeedbackCard(
+    name: String,
+    imagePainter: Int,
+    modifier: Modifier = Modifier,
+) {
     Box(
         modifier = modifier
             .size(
@@ -40,7 +43,6 @@ fun FeedbackCard(name: String, imagePainter: Int, modifier: Modifier = Modifier)
                 ),
                 shape = RoundedCornerShape(12.dp)
             )
-
     ) {
         Column(
             modifier = Modifier
@@ -67,5 +69,8 @@ fun FeedbackCard(name: String, imagePainter: Int, modifier: Modifier = Modifier)
 @Preview
 @Composable
 fun FeedbackCardPreview() {
-    FeedbackCard(name = "Keluhan dan Pelayanan", imagePainter = R.drawable.ic_launcher_background)
+    FeedbackCard(
+        name = "Keluhan dan Pelayanan",
+        imagePainter = R.drawable.ic_launcher_background
+    )
 }

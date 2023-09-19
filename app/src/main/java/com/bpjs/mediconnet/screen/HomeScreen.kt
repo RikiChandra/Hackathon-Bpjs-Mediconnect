@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bpjs.mediconnet.component.CategoryChips
 import com.bpjs.mediconnet.component.MedicineCard
-import com.bpjs.mediconnet.component.PharmacyCard
+import com.bpjs.mediconnet.component.PharmacySecondVarCard
 import com.bpjs.mediconnet.elements.HeaderScreen
 import com.bpjs.mediconnet.helper.UiState
 import com.bpjs.mediconnet.model.DataItem
@@ -155,7 +155,7 @@ fun PharmacyHomeContent(
 ) {
     LazyRow {
         items(pharmacies) { pharmacy ->
-            PharmacyCard(
+            PharmacySecondVarCard(
                 name = pharmacy.nama,
                 address = pharmacy.alamat,
                 imageUrl = pharmacy.foto,
